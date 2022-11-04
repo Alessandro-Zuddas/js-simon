@@ -51,6 +51,28 @@ function memoryTimer(){
 }
 
 // Funzione per cronometrare i 30 secondi di tempo
+function remaningTime(){
+
+    setInterval(function(){
+
+        if(timeToEnd > 0){
+
+            for (let i = 30; i > 0 ; i--) {
+            
+                timerText.innerHTML = `Rimangono ${timeToEnd} secondi!`
+                timeToEnd--;
+                break;
+            }
+
+        }else{
+            timerText.innerHTML = `Tempo scaduto!`
+        }
+
+    }, 1000)
+
+}
+
+// Funzione per chiedere inserimento numeri all'utente
 
 
 /*--------------------------------------------------------------------------------
@@ -68,8 +90,15 @@ let currentNumber;
 // Contenitore per numeri da creare dinamicamente
 let finalNumber;
 
+// Dichiarazione del testo del timer
+const timerText = document.querySelector(".timer");
+
+let timeToEnd = 30;
+
+
 setGameTable(rndNumbers);
 memoryTimer();
+remaningTime();
 
 // Descrizione:
 // Visualizzare in pagina 5 numeri casuali da 1 a 100 senza duplicati.
