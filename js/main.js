@@ -46,14 +46,14 @@ function memoryTimer(){
             
         }
 
-    }, 30000)
+    }, 31000)
 
 }
 
 // Funzione per cronometrare i 30 secondi di tempo
 function remaningTime(){
 
-    setInterval(function(){
+    let timerCore = setInterval(function(){
 
         if(timeToEnd > 0){
 
@@ -61,7 +61,7 @@ function remaningTime(){
             
                 timerText.innerHTML = `Rimangono ${timeToEnd} secondi!`
                 timeToEnd--;
-                break;
+                return;
             }
 
         }else{
@@ -70,10 +70,22 @@ function remaningTime(){
 
     }, 1000)
 
+    setTimeout(function(){
+        clearInterval(timerCore); 
+    }, 32000);
+
 }
 
 // Funzione per chiedere inserimento numeri all'utente
+function userInput(){
 
+    setTimeout(function(){
+        if(timeToEnd <= 0){
+            console.log("fattoooo");
+        }
+    }, 33000);
+
+}
 
 /*--------------------------------------------------------------------------------
                                  /FUNCTIONS 
@@ -93,12 +105,14 @@ let finalNumber;
 // Dichiarazione del testo del timer
 const timerText = document.querySelector(".timer");
 
+// Contatore timer
 let timeToEnd = 30;
-
 
 setGameTable(rndNumbers);
 memoryTimer();
 remaningTime();
+userInput()
+
 
 // Descrizione:
 // Visualizzare in pagina 5 numeri casuali da 1 a 100 senza duplicati.
