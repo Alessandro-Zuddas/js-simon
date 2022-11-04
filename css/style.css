@@ -7,3 +7,54 @@
     margin: 0;
     padding: 0;
 }
+
+/*---------
+   COMMON
+---------*/
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 31.25rem;
+    background-color: bisque;
+    padding: 1.25rem 1.25rem;
+}
+
+/*---------
+   MAIN
+---------*/
+
+main{
+    text-align: center;
+}
+
+.title{
+    margin-bottom: .9375rem;
+}
+
+.numbers-container{
+    display: flex;
+    border: 1px solid black;
+    padding: .9375rem .9375rem;
+}
+
+.number{
+    font-size: 1.5625rem;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: .3125rem .3125rem;
+    margin: 0 .3125rem;
+}   
+
+.timer{
+    font-size: 1.5625rem;
+    margin-top: .9375rem;
+}
