@@ -81,10 +81,49 @@ function userInput(){
 
     setTimeout(function(){
         if(timeToEnd <= 0){
-            console.log("fattoooo");
+            
+            for (let i = 0; i < rndNumbers.length; i++) {
+                
+                userChoice = Number(prompt("Inserisci i numeri di Simon uno alla volta!"));
+                userNumbers.push(userChoice);
+                console.log(userNumbers);
+
+            }
+
+            if(JSON.stringify(userNumbers) === JSON.stringify(rndNumbers)){ 
+
+                timerText.innerHTML = `Complimenti hai indovinato tutti i numeri! <br> ${rndNumbers}`;
+
+                setTimeout(function(){
+                    alert("Premi OK e mettiti alla prova con altri numeri!");
+                    window.location.reload();
+                }, 500);
+
+            }else{
+
+                timerText.innerHTML = `Che peccato, i numeri di Simon erano: <br> ${rndNumbers}. <br> I numeri inseriti da te invece sono: <br> ${userNumbers}`;
+
+                setTimeout(function(){
+                    alert("Premi OK per riprovare!");
+                    window.location.reload();
+                }, 500);
+            }
+
         }
     }, 33000);
 
+}
+
+// Funzione per definire il ciclo di vita del gioco
+function gameLifeCicle(){
+
+    setGameTable(rndNumbers);
+
+    memoryTimer();
+
+    remaningTime();
+
+    userInput()
 }
 
 /*--------------------------------------------------------------------------------
@@ -108,18 +147,10 @@ const timerText = document.querySelector(".timer");
 // Contatore timer
 let timeToEnd = 30;
 
-setGameTable(rndNumbers);
-memoryTimer();
-remaningTime();
-userInput()
+// Contenitore per input progressivo utente
+let userChoice;
 
+// Array numeri scelti dall'utente
+let userNumbers = [];
 
-// Descrizione:
-// Visualizzare in pagina 5 numeri casuali da 1 a 100 senza duplicati.
-// Da lì parte un timer di 30 secondi.
-// Dopo 30 secondi i numeri scompaiono e l'utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-// Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-// Consigli del giorno:
-// * Pensate prima in italiano.
-// * Dividete in piccoli problemi la consegna.
-// * Individuate gli elementi di cui avete bisogno per realizzare il programma.
+gameLifeCicle();
